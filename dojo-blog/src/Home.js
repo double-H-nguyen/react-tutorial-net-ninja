@@ -1,21 +1,21 @@
+import { useState } from 'react';
+
 const Home = () => {
+    // array destructuring to grab 2 values
+    // let name = 'mario' non-react way of declaring variable
+    const [name, setName] = useState('mario'); // reactive
+    const [age, setAge] = useState(25);
 
     const handleClick = () => {
-        console.log('hello, ninjas')
-    }
-
-    const handleClickAgain = (name, e) => {
-        console.log('hello ' + name, e.target);
+        setName('luigi');
+        setAge(24);
     }
 
     return ( 
         <div className="home">
             <h2>Home Page</h2>
-            <button onClick={handleClick}>Click Me</button>
-
-            {/* Use anonymous function to use value in function with instantiating it */}
-            {/* reference event */}
-            <button onClick={(e) => handleClickAgain('henry', e)}>Click me again</button>
+            <p>{ name } is { age } years old</p>
+            <button onClick={handleClick}>Update</button>
         </div>
     );
 }
