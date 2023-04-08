@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import BlogList from './BlogList';
 
 const Home = () => {
     // create a variable that holds a list of objects
@@ -10,13 +11,9 @@ const Home = () => {
 
     return ( 
         <div className="home">
-            {blogs.map((blog) => (
-                // key attribute is important so react can keep track of each item
-                <div className="blog-preview" key={blog.id}>
-                    <h2>{blog.title}</h2>
-                    <p>Written by {blog.author}</p>
-                </div>
-            ))}
+            {/* calls a React component that we created */}
+            {/* Add props to React component to pass data through */}
+            <BlogList blogs={blogs} title="List of Blogs"/>
         </div>
     );
 }
