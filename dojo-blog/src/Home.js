@@ -1,21 +1,22 @@
 import { useState } from 'react';
 
 const Home = () => {
-    // array destructuring to grab 2 values
-    // let name = 'mario' non-react way of declaring variable
-    const [name, setName] = useState('mario'); // reactive
-    const [age, setAge] = useState(25);
-
-    const handleClick = () => {
-        setName('luigi');
-        setAge(24);
-    }
+    // create a variable that holds a list of objects
+    const[blogs, setBlogs] = useState([
+        {title: 'Website title #1', body: 'lorem ipsum...', author: 'mario', id: 1},
+        {title: 'Website title #2', body: 'lorem ipsum...', author: 'yoshi', id: 2},
+        {title: 'website title #3', body: 'lorem ipsum...', author: 'mario', id: 3}
+    ]);
 
     return ( 
         <div className="home">
-            <h2>Home Page</h2>
-            <p>{ name } is { age } years old</p>
-            <button onClick={handleClick}>Update</button>
+            {blogs.map((blog) => (
+                // key attribute is important so react can keep track of each item
+                <div className="blog-preview" key={blog.id}>
+                    <h2>{blog.title}</h2>
+                    <p>Written by {blog.author}</p>
+                </div>
+            ))}
         </div>
     );
 }
